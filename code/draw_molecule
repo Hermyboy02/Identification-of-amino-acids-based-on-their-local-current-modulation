@@ -1,0 +1,13 @@
+from rdkit import Chem
+from rdkit.Chem import AllChem
+from rdkit.Chem import Draw
+
+amino = input("input amino acid: ")
+
+mol_supplier = Chem.SDMolSupplier("Amino_acids_SDF/" + amino + ".sdf", removeHs=False)
+
+mol = mol_supplier[0]
+
+AllChem.Compute2DCoords(mol)
+img = Draw.MolToImage(mol, size=(1000, 1000))
+img.show()
